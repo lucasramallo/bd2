@@ -2,6 +2,8 @@ package com.github.lucasramallo;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        ObjectStorageService objectStorageService = new ObjectStorageService();
+//        objectStorageService.upload("bd2", "file.pdf", "src/main/resources/teste.pdf");
+        objectStorageService.dowloadObject("bd2", "file.pdf", "src/main/resources/downloads/");
     }
 }
