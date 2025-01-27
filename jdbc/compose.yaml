@@ -1,0 +1,14 @@
+services:
+  postgres:
+    container_name: bd2
+    hostname: bd2
+    image: postgres
+    restart: always
+    volumes:
+      - ./local/path:/container/path
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bd2
+    ports:
+      - 5434:5432
