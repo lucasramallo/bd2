@@ -15,7 +15,7 @@ public class Main {
         String geoserverUrl = "http://localhost:8080/geoserver/joaolucas/wms";
 
         String params = "?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap"
-                + "&FORMAT=image/jpeg"
+                + "&FORMAT=image/png"
                 + "&TRANSPARENT=true"
                 + "&STYLES="
                 + "&LAYERS=joaolucas:PB_Municipios_2023"
@@ -29,7 +29,7 @@ public class Main {
 
             try (CloseableHttpResponse response = httpClient.execute(request);
                  InputStream inputStream = response.getEntity().getContent();
-                 FileOutputStream fileOutputStream = new FileOutputStream(new File("esperanca_mapa.jpg"))) {
+                 FileOutputStream fileOutputStream = new FileOutputStream(new File("esperanca_mapa.png"))) {
 
                 if (response.getCode() == 200) {
                     byte[] buffer = new byte[1024];
@@ -37,7 +37,7 @@ public class Main {
                     while ((bytesRead = inputStream.read(buffer)) != -1) {
                         fileOutputStream.write(buffer, 0, bytesRead);
                     }
-                    System.out.println("Imagem salva como 'esperanca_mapa.jpg'.");
+                    System.out.println("Imagem salva como 'esperanca_mapa.png'.");
                 } else {
                     System.out.println("Erro ao obter imagem: " + response.getCode());
                 }
